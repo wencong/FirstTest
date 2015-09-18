@@ -1,7 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+using UnityEngine;
 
 
 public static class SettingConfig {
@@ -36,6 +38,22 @@ public abstract class DataTable {
         string fullPath = string.Format("{0}/{1}", SettingConfig.settingPath, filePath);
 
         return true;
+    }
+
+    public bool _Load(string filePath) {
+        bool bRetCode = false;
+        bool bResult = false;
+
+        StreamReader streamReader = null;
+
+        TextAsset text = Resources.Load<TextAsset>(filePath);
+
+        if (text == null) {
+        }
+
+        bResult = true;
+
+        return bResult;
     }
 }
 
