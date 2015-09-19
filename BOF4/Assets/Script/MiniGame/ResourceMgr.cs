@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using UnityEngine;
 
 
 public class ResourceMgr : Singleton<ResourceMgr> {
@@ -11,7 +11,7 @@ public class ResourceMgr : Singleton<ResourceMgr> {
     }
 
     public void UnLoad<T>(T obj) where T : UnityEngine.Object {
-        Resources.UnLoadAsset(obj);
+        Resources.UnloadAsset(obj);
     }
 }
 

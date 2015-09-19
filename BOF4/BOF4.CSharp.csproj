@@ -79,6 +79,7 @@
     <Compile Include="Assets\Script\MiniGame\Item.cs" />
     <Compile Include="Assets\Script\MiniGame\Log.cs" />
     <Compile Include="Assets\Script\MiniGame\MiniGame.cs" />
+    <Compile Include="Assets\Script\MiniGame\ResourceMgr.cs" />
     <Compile Include="Assets\Script\MiniGame\Singleton.cs" />
     <Compile Include="Assets\Script\Monster\Monster.cs" />
     <Compile Include="Assets\Script\Monster\MonsterBase.cs" />

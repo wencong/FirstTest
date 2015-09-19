@@ -46,7 +46,7 @@ public abstract class DataTable {
 
         StreamReader streamReader = null;
 
-        TextAsset text = Resources.Load<TextAsset>(filePath);
+        TextAsset text = ResourceMgr.Instance().Load<TextAsset>(filePath);
 
         if (text == null) {
             Log.Error("Load Texture Failed: {0}", filePath);
@@ -54,9 +54,12 @@ public abstract class DataTable {
         }
 
         try {
-            streamReader = new StreamReader(text.bytes);
+            //streamReader = new StreamReader(text.bytes);
         }
-
+        catch (Exception ex){
+            Log.Exception(ex);
+            goto Exit0;
+        }
         bResult = true;
 
     Exit0:
@@ -66,7 +69,7 @@ public abstract class DataTable {
         }
 
         if (text != null) {
-            Resources.UnloadAsset.UnLoad(text);
+            ResourceMgr.Instance().UnLoad(text);
         }
         return bResult;
     }
