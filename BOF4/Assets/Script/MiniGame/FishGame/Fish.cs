@@ -20,8 +20,6 @@ public class Fish : Item
     public int maxPower;
     public int minPoint;
     public int maxPoint;
-    public int buyPrice;
-    public int sellPrice;
 
     public int[] baitList = new int[(int)EnumBaitType.TypeCount];
 
