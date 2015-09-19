@@ -3,24 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+enum ItemType {
+}
+
 public class Item {
-    private string m_name;
-    private int m_ID;
-    public Item(string name, int id) {
-        m_name = name;
-        m_ID = id;
-    }
+    public string name;
+    public int ID;
 
-    public string name {
-        get {
-            return m_name;
-        }
-    }
+    public int buyPrice;
+    public int sellPrice;
 
-    public int ID {
-        get {
-            return m_ID;
-        }
-    }
+    public string comment;
 }
 

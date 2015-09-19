@@ -7,7 +7,7 @@ using UnityEngine;
 
 
 public static class SettingConfig {
-    public static string settingPath = "Package/Settings";
+    public static string settingPath = "Settings";
     public static string ext = "csv";
     public static char[] chSep = new char[1] { ',' };
     public static int maxColumns = 40;
@@ -34,7 +34,7 @@ public abstract class DataTable {
         bool bResult = false;
 
         bRetCode = string.IsNullOrEmpty(filePath);
-        if (!bRetCode) {
+        if (bRetCode) {
             Log.Info("file is null or empty.");
             goto Exit0;
         }
@@ -55,20 +55,20 @@ public abstract class DataTable {
         return bResult;
     }
 
-    public bool Init() {
+    private bool Init() {
         m_curLineDatas = new string[SettingConfig.maxColumns];
         m_keyMap = new Dictionary<string, int>();
         return true;
     }
 
-    public bool UnInit() {
+    private bool UnInit() {
         m_curLineDatas = null;
         m_keyMap.Clear();
         m_keyMap = null;
         return true;
     }
 
-    public bool _Load(string filePath) {
+    private bool _Load(string filePath) {
         bool bRetCode = false;
         bool bResult = false;
 
@@ -145,7 +145,7 @@ public abstract class DataTable {
             string key = columns[i];
             bRetCode = m_keyMap.ContainsKey(key);
             
-            if (!bRetCode) {
+            if (bRetCode) {
                 Log.Error("The key {0} is already exist in file: {1}", key, m_filePath);
                 goto Exit0;
             }
@@ -166,6 +166,12 @@ public abstract class DataTable {
         if (!bRetCode) {
             goto Exit0;
         }
+
+        bRetCode = OnParseLine(lineNum);
+        if (!bRetCode) {
+            goto Exit0;
+        }
+
         bResult = true;
 
     Exit0:
@@ -173,26 +179,84 @@ public abstract class DataTable {
     }
 
     private bool _SplitData(string line) {
-        bool bRetCode = false;
         bool bResult = false;
 
         bool isText = false;
+        int nStartPos = 0;
+        int nColumnCount = 0;
 
         for (int i = 0; i < line.Length; ++i) {
             char ch = line[i];
             if (ch == '"') {
                 isText = !isText;
             }
-            else {
-                if (ch == SettingConfig.chSep[0]) {
-
+            else if (ch == SettingConfig.chSep[0] && !isText) {
+                string data = line.Substring(nStartPos, i - nStartPos);
+                m_curLineDatas[nColumnCount] = _DeleteQuotes(data);
+                nStartPos = i + 1;
+                nColumnCount++;
+                if (nColumnCount > SettingConfig.maxColumns) {
+                    Log.Error("columnCount is beyond of the max value of maxColumns");
+                    goto Exit0;
                 }
             }
+        }
+
+        if (nStartPos < line.Length) {
+            string data = line.Substring(nStartPos, line.Length - nStartPos);
+            m_curLineDatas[nColumnCount++] = _DeleteQuotes(data);
         }
 
         bResult = true;
     Exit0:
         return bResult;
+    }
+
+    private string _DeleteQuotes(string s) {
+        if (s.Length > 1 && s[0] == '"' && s[s.Length - 1] == '"') {
+            s = s.Substring(1, s.Length - 2);
+        }
+        return s;
+    }
+
+    private string _GetValueByName(string name) {
+        int nIndex = 0;
+
+        if (m_keyMap.TryGetValue(name, out nIndex) &&
+            nIndex < m_keyMap.Count) {
+            string value = m_curLineDatas[nIndex];
+            if (value != "" && value != "null") {
+                return value;
+            }
+        }
+
+        return null;
+    }
+
+    protected string GetString(string name, string defaultValue = "", bool bMust = false) {
+        string value = _GetValueByName(name);
+
+        if (value == null) {
+            Log.Error("GetString failed : {0} in {1}", name, m_filePath);
+            value = defaultValue;
+        }
+
+        return value;
+    }
+
+    protected int GetInt(string name, int defaultValue = -1, bool bMust = false) {
+        string value = _GetValueByName(name);
+        if (value == null) {
+            Log.Error("GetString failed : {0} in {1}", name, m_filePath);
+            return defaultValue;
+        }
+
+        int nValue = 0;
+        if (!int.TryParse(value, out nValue)) {
+            Log.Error("Parse value failed : {0} in {1}", name, m_filePath);
+            return defaultValue;
+        }
+        return nValue;
     }
 }
 

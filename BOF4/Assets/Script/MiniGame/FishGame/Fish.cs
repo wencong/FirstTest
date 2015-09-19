@@ -6,54 +6,35 @@ using System.Text;
 
 public enum FishShadowType
 {
-    FishType,
     CircleType,
+    FishType,
     BarType
 }
 
 public class Fish : Item
 {
-    private float m_fSize;
-    private float m_fManual;
-    private FishShadowType m_shadowType;
+    public FishShadowType m_shadowType;
+    public int minSize;
+    public int maxSize;
+    public int minPower;
+    public int maxPower;
+    public int minPoint;
+    public int maxPoint;
+    public int buyPrice;
+    public int sellPrice;
 
-    private float m_fMinSize;
-    private float m_fMaxSize;
+    public int[] baitList = new int[(int)EnumBaitType.TypeCount];
 
-    private bool[] m_eatBaits = new bool[(int)EnumBaitType.Count];
-    public Fish(string name, int id, float manual,
-                FishShadowType type, float size,
-                float minSize, float maxSize) 
-                 : base(name, id) {
-        m_fManual = manual;
-        m_shadowType = type;
-        m_fSize = size;
 
-        m_fMinSize = minSize;
-        m_fMaxSize = maxSize;
-    }
+    public Fish() {
 
-    public FishShadowType ShadowType {
-        get {
-            return m_shadowType;
-        }
-    }
-
-    public bool InitEatBait(EnumBaitType type) {
-        m_eatBaits[(int)type] = true;
-        return true;
     }
 
     public bool IsEatBait(Bait bait) {
-        return m_eatBaits[(int)bait.BaitType];
-    }
-}
-
-public class DazuiFish : Fish {
-    public DazuiFish(string name, int id, float manual,
-                     FishShadowType type, float size,
-                     float minSize, float maxSize) : 
-                     base (name, id, manual, type, size, minSize, maxSize){
-
+        int nNeedLevel = baitList[(int)bait.type];
+        if (nNeedLevel <= bait.level && nNeedLevel != -1){
+            return true;
+        }
+        return false;
     }
 }

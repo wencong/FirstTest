@@ -4,33 +4,21 @@ using System.Linq;
 using System.Text;
 
 public enum EnumBaitType {
+    XuanZhuanType,
+    NiErType,
+    DingJiType,
+    CiYaoType,
     QingWaType,
     ChongType,
-    XuanZhuanQiType,
-    Count
+    YaoShiType,
+    TypeCount
 }
 
 public class Bait : Item {
-    private EnumBaitType m_type;
-    private int m_nTastetLevel;
+    public EnumBaitType type;
+    public int level;
 
-    public Bait(string name, int id, EnumBaitType type, int level) : base(name, id) {
-        m_type = type;
-        m_nTastetLevel = level;
+    public Bait() {
     }
 
-    public int TasteLevel {
-        get {
-            return m_nTastetLevel;
-        }
-        set {
-            m_nTastetLevel = value;
-        }
-    }
-
-    public EnumBaitType BaitType {
-        get {
-            return m_type;
-        }
-    }
 }

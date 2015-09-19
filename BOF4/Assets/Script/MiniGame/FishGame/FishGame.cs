@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
-public class FishGame : IMiniGame{
+public class FishGame : MonoBehaviour, IMiniGame {
+    private FishDataTable fishData = null;
 
-    public void Start() {
-        Log.Info("Fish Game Start");
+    void Start() {
+        fishData = new FishDataTable();
+        fishData.LoadFile("fish");
     }
 
-    public void Update(float dt) {
-
-    }
-
-    public void Stop() {
+    void Update() {
 
     }
 }
