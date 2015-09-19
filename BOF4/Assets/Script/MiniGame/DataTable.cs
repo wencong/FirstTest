@@ -49,10 +49,25 @@ public abstract class DataTable {
         TextAsset text = Resources.Load<TextAsset>(filePath);
 
         if (text == null) {
+            Log.Error("Load Texture Failed: {0}", filePath);
+            goto Exit0;
+        }
+
+        try {
+            streamReader = new StreamReader(text.bytes);
         }
 
         bResult = true;
 
+    Exit0:
+        if (streamReader != null) {
+            streamReader.Close();
+            streamReader = null;
+        }
+
+        if (text != null) {
+            Resources.UnloadAsset.UnLoad(text);
+        }
         return bResult;
     }
 }
