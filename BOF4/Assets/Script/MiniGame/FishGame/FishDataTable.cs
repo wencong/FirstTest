@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 public class FishDataTable : DataTable {
-    private Dictionary<int, Fish> m_Fishes = new Dictionary<int, Fish>();
+    private Dictionary<int, Fish> Fishes = new Dictionary<int, Fish>();
 
     protected override bool OnParseLine(int nLineNum) {
         Fish fish = new Fish();
@@ -34,7 +34,7 @@ public class FishDataTable : DataTable {
 
         fish.comment = GetString("Comment");
 
-        m_Fishes.Add(fish.ID, fish);
+        Fishes.Add(fish.ID, fish);
         Log.Info(fish.name);
         Log.Info(fish.comment);
         return true;   
