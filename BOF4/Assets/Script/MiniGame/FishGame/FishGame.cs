@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-public class FishGame : MonoBehaviour, IMiniGame {
-    private FishDataTable fishData = null;
-
+public class FishGame : Singleton<FishGameSetting>, IMiniGame {
+    
     void Start() {
-        fishData = new FishDataTable();
-        fishData.LoadFile("fish");
+        FishGameSetting.Instance().LoadSettings();
+        FishGameSetting.Instance().Init();
     }
 
     void Update() {

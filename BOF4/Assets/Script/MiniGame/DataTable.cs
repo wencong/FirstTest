@@ -18,6 +18,8 @@ public abstract class DataTable {
     private string[] m_curLineDatas = null;
     private Dictionary<string, int> m_keyMap = null;
 
+    public abstract bool Init();
+    public abstract bool UnInit();
     protected abstract bool OnParseLine(int nLineNum);
     protected abstract bool OnLoadComplete();
 
@@ -42,9 +44,9 @@ public abstract class DataTable {
         m_filePath = filePath;
         string fullPath = string.Format("{0}/{1}", SettingConfig.settingPath, filePath);
 
-        Init();
+        _Init();
         bRetCode = _Load(fullPath);
-        UnInit();
+        _UnInit();
 
         if (!bRetCode) {
             goto Exit0;
@@ -55,13 +57,13 @@ public abstract class DataTable {
         return bResult;
     }
 
-    private bool Init() {
+    private bool _Init() {
         m_curLineDatas = new string[SettingConfig.maxColumns];
         m_keyMap = new Dictionary<string, int>();
         return true;
     }
 
-    private bool UnInit() {
+    private bool _UnInit() {
         m_curLineDatas = null;
         m_keyMap.Clear();
         m_keyMap = null;

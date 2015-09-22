@@ -3,8 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 public class FishDataTable : DataTable {
-    private Dictionary<int, Fish> Fishes = new Dictionary<int, Fish>();
+    private Dictionary<int, Fish> m_Fishes = new Dictionary<int, Fish>();
 
+    public Fish GetFishByID(int ID) {
+        Fish fish = null;
+        m_Fishes.TryGetValue(ID, out fish);
+        return fish;
+    }
+
+    public override bool Init() {
+        return true;
+    }
+
+    public override bool UnInit() {
+        return true;
+    }
+    
     protected override bool OnParseLine(int nLineNum) {
         Fish fish = new Fish();
 
@@ -34,7 +48,8 @@ public class FishDataTable : DataTable {
 
         fish.comment = GetString("Comment");
 
-        Fishes.Add(fish.ID, fish);
+        m_Fishes.Add(fish.ID, fish);
+
         Log.Info(fish.name);
         Log.Info(fish.comment);
         return true;   

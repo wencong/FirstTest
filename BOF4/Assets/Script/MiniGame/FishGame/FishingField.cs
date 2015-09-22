@@ -5,21 +5,14 @@ using System.Text;
 using UnityEngine;
 
 public class FishingField {
-    private string m_name = "海边的钓鱼场";
-    private Vector3 m_posOri;
-    private List<WaterField> m_waterFields = new List<WaterField>();
+    public int ID;
+    public string name;
+    public List<int> regionsID = new List<int>();
 
-    public bool Init(string name) {
-        m_name = name;
-        m_posOri = new Vector3(0, 0, 0);
-        /*
-         * load config;
-         * for()
-         * {
-         *       WaterField wf = new WaterField(...);
-         *       m_waterField.Add(wf);
-         * }
-         */ 
+    private List<WaterRegion> m_waterFields = new List<WaterRegion>();
+
+    public bool Init() {
+
         return true;
     }
 
