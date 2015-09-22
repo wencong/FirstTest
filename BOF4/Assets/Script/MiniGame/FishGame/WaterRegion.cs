@@ -16,7 +16,7 @@ public class WaterRegion {
     public bool Init() {
         for (int i = 0; i < FishsID.Count; ++i) {
             int ID = FishsID[i];
-            Fish fish = FishPool.Instance().GetFish(ID);
+            Fish fish = FishGameSetting.Instance().fishData.GetFishByID(ID);
             m_Fishes.Add(fish);
         }
         return true;

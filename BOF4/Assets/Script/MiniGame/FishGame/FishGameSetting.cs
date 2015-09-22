@@ -6,9 +6,9 @@ using System.Text;
 
 public class FishGameSetting : Singleton<FishGameSetting>, IGameSetting {
 
-    private FishDataTable fishData = new FishDataTable();
-    private WaterRegionDataTable regionData = new WaterRegionDataTable();
-    private FishingFieldDataTable fieldData = new FishingFieldDataTable();
+    public FishDataTable fishData = new FishDataTable();
+    public WaterRegionDataTable regionData = new WaterRegionDataTable();
+    public FishingFieldDataTable fieldData = new FishingFieldDataTable();
 
     public bool LoadSettings() {
         bool bRetCode = false;
