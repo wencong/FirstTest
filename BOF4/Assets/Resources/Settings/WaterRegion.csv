@@ -1,0 +1,4 @@
+ID,Name,Distance,Height,Fish1,Fish2,Fish3,Fish4,Fish5
+1,近区域,5,1,1,2,3,,
+2,中区域,10,2,2,3,4,,
+3,远区域,20,,5,6,7,,

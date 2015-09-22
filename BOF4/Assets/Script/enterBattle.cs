@@ -18,7 +18,7 @@ public class enterBattle : MonoBehaviour {
         GameObject monster2 = GameObject.Instantiate(prefab) as GameObject;
         GameObject monster3 = GameObject.Instantiate(prefab) as GameObject;
 
-        GameObject[] monsters = { monster1, monster2, monster3 };
+        //GameObject[] monsters = { monster1, monster2, monster3 };
 
         GameObject role = GameObject.Find("sphere");
 

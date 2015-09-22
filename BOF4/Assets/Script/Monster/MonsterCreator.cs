@@ -8,7 +8,7 @@ using UnityEngine;
 // 怪物生成器
 public class MonsterCreator
 {
-    private Dictionary<int, MonsterBase> m_dictMonsters = new Dictionary<int, MonsterBase>();
+    //private Dictionary<int, MonsterBase> m_dictMonsters = new Dictionary<int, MonsterBase>();
 
     private MonsterCreator(){
     }

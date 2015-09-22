@@ -227,7 +227,7 @@ public abstract class DataTable {
         if (m_keyMap.TryGetValue(name, out nIndex) &&
             nIndex < m_keyMap.Count) {
             string value = m_curLineDatas[nIndex];
-            if (value != "" && value != "null") {
+            if (value != "" && value != null) {
                 return value;
             }
         }
@@ -239,23 +239,23 @@ public abstract class DataTable {
         string value = _GetValueByName(name);
 
         if (value == null) {
-            Log.Error("GetString failed : {0} in {1}", name, m_filePath);
+            //Log.Error("GetString failed : {0} in {1}", name, m_filePath);
             value = defaultValue;
         }
 
         return value;
     }
 
-    protected int GetInt(string name, int defaultValue = -1, bool bMust = false) {
+    protected int GetInt(string name, int defaultValue = 0, bool bMust = false) {
         string value = _GetValueByName(name);
         if (value == null) {
-            Log.Error("GetString failed : {0} in {1}", name, m_filePath);
+            //Log.Error("GetString failed : {0} in {1}", name, m_filePath);
             return defaultValue;
         }
 
         int nValue = 0;
         if (!int.TryParse(value, out nValue)) {
-            Log.Error("Parse value failed : {0} in {1}", name, m_filePath);
+            //Log.Error("Parse value failed : {0} in {1}", name, m_filePath);
             return defaultValue;
         }
         return nValue;

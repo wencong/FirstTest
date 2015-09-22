@@ -15,17 +15,17 @@ public class FishGameSetting : Singleton<FishGameSetting>, IGameSetting {
         bool bResult = false;
 
         bRetCode = fishData.LoadFile("Fish");
-        if (bRetCode) {
+        if (!bRetCode) {
             goto Exit0;
         }
 
         bRetCode = regionData.LoadFile("WaterRegion");
-        if (bRetCode) {
+        if (!bRetCode) {
             goto Exit0;
         }
 
-        bRetCode = fieldData.LoadFile("FishField");
-        if (bRetCode) {
+        bRetCode = fieldData.LoadFile("FishingField");
+        if (!bRetCode) {
             goto Exit0;
         }
 
@@ -39,17 +39,17 @@ public class FishGameSetting : Singleton<FishGameSetting>, IGameSetting {
         bool bResult = false;
 
         bRetCode = fishData.Init();
-        if (bRetCode) {
+        if (!bRetCode) {
             goto Exit0;
         }
 
         bRetCode = regionData.Init();
-        if (bRetCode) {
+        if (!bRetCode) {
             goto Exit0;
         }
 
         bRetCode = fieldData.Init();
-        if (bRetCode) {
+        if (!bRetCode) {
             goto Exit0;
         }
 

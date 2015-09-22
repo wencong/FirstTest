@@ -7,6 +7,12 @@ using System.Text;
 public class WaterRegionDataTable : DataTable {
     private Dictionary<int, WaterRegion> m_waterRegions = new Dictionary<int, WaterRegion>();
 
+    public WaterRegion GetRegionByID(int ID) {
+        WaterRegion region = null;
+        m_waterRegions.TryGetValue(ID, out region);
+        return region;
+    }
+
     public override bool Init() {
         foreach (WaterRegion region in m_waterRegions.Values) {
             region.Init();

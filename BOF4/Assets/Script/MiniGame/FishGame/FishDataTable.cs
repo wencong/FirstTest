@@ -50,8 +50,8 @@ public class FishDataTable : DataTable {
 
         m_Fishes.Add(fish.ID, fish);
 
-        Log.Info(fish.name);
-        Log.Info(fish.comment);
+        //Log.Info(fish.name);
+        //Log.Info(fish.comment);
         return true;   
     }
 
