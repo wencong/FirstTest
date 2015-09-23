@@ -21,6 +21,7 @@ public class WaterRegionDataTable : DataTable {
     }
 
     public override bool UnInit() {
+        m_waterRegions.Clear();
         return true;
     }
 

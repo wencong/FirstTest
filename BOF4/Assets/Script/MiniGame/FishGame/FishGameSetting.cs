@@ -34,6 +34,7 @@ public class FishGameSetting : Singleton<FishGameSetting>, IGameSetting {
         return bResult;
         
     }
+
     public bool Init() {
         bool bRetCode = false;
         bool bResult = false;
@@ -57,6 +58,7 @@ public class FishGameSetting : Singleton<FishGameSetting>, IGameSetting {
     Exit0:
         return bResult;
     }
+
     public bool UnInit() {
         bool bRetCode = false;
         bool bResult = false;

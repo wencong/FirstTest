@@ -7,10 +7,16 @@ using UnityEngine;
 public class FishGame : Singleton<FishGame>, IMiniGame {
     private bool ShowInfo = true;
 
-    public void Start() {
-        FishGameSetting.Instance().LoadSettings();
+    public bool Load() {
+        return FishGameSetting.Instance().LoadSettings();
+    }
 
-        FishGameSetting.Instance().Init();
+    public bool Init() {
+        return FishGameSetting.Instance().Init();
+    }
+
+    public bool Start() {
+        return true;
     }
 
     public void Update() {
@@ -32,6 +38,10 @@ public class FishGame : Singleton<FishGame>, IMiniGame {
             Log.Info(info);
             ShowInfo = false;
         }
+    }
+
+    public bool Stop() {
+        return FishGameSetting.Instance().UnInit();
     }
 }
 
