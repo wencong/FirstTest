@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
+public enum FishGameStatus {
+    enumIdel,
+}
+
 public class FishGame : Singleton<FishGame>, IMiniGame {
     private bool ShowInfo = true;
 
