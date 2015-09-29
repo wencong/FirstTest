@@ -16,9 +16,9 @@ public abstract class UIWin : MonoBehaviour {
 	
 	}
 
-	protected abstract bool OnOpen();
+	public abstract bool OnOpen();
 
-	protected abstract bool OnClose();
+	public abstract bool OnClose();
 
 	protected void SetFirstSelectButton(string btnName) {
 		Transform btn = transform.FindChild(btnName);

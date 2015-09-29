@@ -23,11 +23,11 @@ public class cameraTrace : MonoBehaviour {
     private bool m_bTobeRotate = false;
 
     void Awake() {
-        MonsterCreator.getInstance().loadSettings();    
+        //MonsterCreator.getInstance().loadSettings();    
     }
 
 	void Start () {
-		m_MainCamera = GameObject.Find ("Main Camera");
+		m_MainCamera = Camera.main.gameObject;
 		if (!m_MainCamera) {
 			print("main camera not exit");
 		}

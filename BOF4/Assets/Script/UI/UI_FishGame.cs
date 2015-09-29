@@ -5,11 +5,6 @@ public class UI_FishGame : UIWin {
 
 	// Use this for initialization
 	void Start () {
-		InitButton("Button_ziliao", OnZiliaoButtonClick);
-		InitButton("Button_zhuangbei", OnZhuangbeiButtonClick);
-		InitButton("Button_shezhi", OnShezhiButtonClick);
-
-		SetFirstSelectButton("Button_ziliao");
 	}
 	
 	// Update is called once per frame
@@ -17,11 +12,17 @@ public class UI_FishGame : UIWin {
 	
 	}
 
-	protected override bool OnOpen() { 
+	public override bool OnOpen() {
+		Log.Info("OnOpen");
+		InitButton("Button_ziliao", OnZiliaoButtonClick);
+		InitButton("Button_zhuangbei", OnZhuangbeiButtonClick);
+		InitButton("Button_shezhi", OnShezhiButtonClick);
+		
+		SetFirstSelectButton("Button_ziliao");
 		return true;
 	}
 
-	protected override bool OnClose() {
+	public override bool OnClose() {
 		return true;
 	}
 

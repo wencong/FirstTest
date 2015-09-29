@@ -34,13 +34,16 @@ public class UIMgr : Singleton<UIMgr> {
 		if (win == null) {
 			UnityEngine.GameObject ui = _LoadUIPrefab(winID);
 			if (ui != null) {
-				m_cacheUIs.Add(winID, ui.GetComponent<UIWin>());
+				win = ui.GetComponent<UIWin>();
+				m_cacheUIs.Add(winID, win);
 				Log.Info("cache ui:{0}", winID);
 			}
 		}
 		else {
 			win.gameObject.SetActive(true);
 		}
+
+		win.OnOpen();
 
 		return true;
 	}
@@ -53,6 +56,8 @@ public class UIMgr : Singleton<UIMgr> {
 		}
 
 		win.gameObject.SetActive(false);
+
+		win.OnClose();
 
 		if (destory == true) {
 			m_cacheUIs.Remove(winID);
