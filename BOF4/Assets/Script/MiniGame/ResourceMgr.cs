@@ -13,5 +13,16 @@ public class ResourceMgr : Singleton<ResourceMgr> {
     public void UnLoad<T>(T obj) where T : UnityEngine.Object {
         Resources.UnloadAsset(obj);
     }
+
+	public UnityEngine.Object Spawn<T>(string path) where T : UnityEngine.Object {
+		T asset = Load<T>(path);
+		UnityEngine.Object inst = null;
+
+		if (asset != null) {
+			inst = UnityEngine.Object.Instantiate(asset);
+		}
+
+		return inst;
+	}
 }
 

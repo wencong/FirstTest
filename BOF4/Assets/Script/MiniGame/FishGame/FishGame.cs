@@ -6,16 +6,33 @@ using UnityEngine;
 
 public enum FishGameStatus {
     enumIdel,
+	enumMove,
+	enumStartFish,
+	enumFishing
 }
 
 public class FishGame : Singleton<FishGame>, IMiniGame {
     private bool ShowInfo = true;
+
+	private Dictionary<FishGameStatus, IStatus> m_statusFnMap = new Dictionary<FishGameStatus, IStatus>();
+	private FishGameStatus m_currentStatus = FishGameStatus.enumIdel;
+
+	public FishGameStatus Status {
+		get {
+			return m_currentStatus;
+		}
+		set {
+			m_currentStatus = value;
+		}
+	}
 
     public bool Load() {
         return FishGameSetting.Instance().LoadSettings();
     }
 
     public bool Init() {
+		m_statusFnMap.Add(FishGameStatus.enumIdel, new FishStatusIdel());
+
         return FishGameSetting.Instance().Init();
     }
 
@@ -42,6 +59,8 @@ public class FishGame : Singleton<FishGame>, IMiniGame {
             Log.Info(info);
             ShowInfo = false;
         }
+
+		m_statusFnMap[m_currentStatus].Update();
     }
 
     public bool Stop() {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 public class FishDataTable : DataTable {
     private Dictionary<int, Fish> m_Fishes = new Dictionary<int, Fish>();
-
+    
     public Fish GetFishByID(int ID) {
         Fish fish = null;
         m_Fishes.TryGetValue(ID, out fish);

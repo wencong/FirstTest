@@ -4,15 +4,13 @@ using System.Linq;
 using System.Text;
 
 
-public enum FishShadowType
-{
+public enum FishShadowType {
     CircleType,
     FishType,
     BarType
 }
 
-public class Fish : Item
-{
+public class Fish : Item {
     public FishShadowType m_shadowType;
     public int minSize;
     public int maxSize;
