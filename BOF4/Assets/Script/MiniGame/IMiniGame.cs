@@ -9,6 +9,5 @@ public interface IMiniGame {
     bool Start();
     void Update();
     bool Stop();
-
 }
 
