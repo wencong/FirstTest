@@ -8,7 +8,6 @@ public class FishGameTest : MonoBehaviour {
         FishGame.Instance().Load();
         FishGame.Instance().Init();
         FishGame.Instance().Start();
-
 	}
 	
 	// Update is called once per frame
