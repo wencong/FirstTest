@@ -154,3 +154,10 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+/BOF4/Library
+/BOF4/Temp
+/BOF4/资料
+/BOF4/UnityVS.BOF4.CSharp.csproj
+/BOF4/UnityVS.BOF4.sln
+/BOF4/Assets/UnityVS/Editor/UnityVS.VersionSpecific.dll
+/BOF4/Assets/UnityVS/Editor/UnityVS.VersionSpecific.dll.meta
