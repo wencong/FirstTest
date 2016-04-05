@@ -145,7 +145,7 @@ public class cameraTrace : MonoBehaviour {
             DontDestroyOnLoad(m_MainCamera);
             DontDestroyOnLoad(gameObject);
             DontDestroyOnLoad(m_directLight);
-            Application.LoadLevel(1);
+            //Application.LoadLevel(1);
         }
         
     }
