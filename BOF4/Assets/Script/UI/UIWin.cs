@@ -26,7 +26,7 @@ public abstract class UIWin : MonoBehaviour {
 			return;
 		}
 
-		GameObject eventMgr = EventSystemMgr.Instance().gameObject;
+		GameObject eventMgr = EventSystemMgr.Instance.gameObject;
 		if (eventMgr == null) {
 			Debug.Log("eventMgr is not found");
 		}

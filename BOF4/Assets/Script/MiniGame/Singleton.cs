@@ -4,13 +4,15 @@ using System.Text;
 using System.Diagnostics;
 
 public class Singleton<TYPE> where TYPE : new() {
-    public static TYPE Instance() {
-        if (m_instance == null) {
-            m_instance = new TYPE();
-        }
-        Trace.Assert(m_instance != null, "singleton is null");
+    public static TYPE Instance {
+        get {
+            if (m_instance == null) {
+                m_instance = new TYPE();
+            }
+            Trace.Assert(m_instance != null, "singleton is null");
 
-        return m_instance;
+            return m_instance;
+        }
     }
 
     #region

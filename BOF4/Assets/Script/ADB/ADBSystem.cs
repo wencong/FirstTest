@@ -9,11 +9,11 @@ public class ADBSystem : MonoBehaviour {
 		Player[] players = GameObject.FindObjectsOfType<Player>();
 
 		for(int i = 0; i < players.Length; ++i) {
-			ADB.Instance().AddUserData(players[i]);
+			ADB.Instance.AddUserData(players[i]);
 		}
 	}
 
 	void Update () {
-		ADB.Instance().Update();
+		ADB.Instance.Update();
 	}
 }

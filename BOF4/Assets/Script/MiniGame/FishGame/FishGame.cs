@@ -27,13 +27,13 @@ public class FishGame : Singleton<FishGame>, IMiniGame {
 	}
 
     public bool Load() {
-        return FishGameSetting.Instance().LoadSettings();
+        return FishGameSetting.Instance.LoadSettings();
     }
 
     public bool Init() {
 		m_statusFnMap.Add(FishGameStatus.enumIdel, new FishStatusIdel());
 
-        return FishGameSetting.Instance().Init();
+        return FishGameSetting.Instance.Init();
     }
 
     public bool Start() {
@@ -43,7 +43,7 @@ public class FishGame : Singleton<FishGame>, IMiniGame {
     public void Update() {
         if (ShowInfo) {
             string info = "";
-            FishingField field = FishGameSetting.Instance().fieldData.GetFishingFieldByID(1);
+            FishingField field = FishGameSetting.Instance.fieldData.GetFishingFieldByID(1);
             info += string.Format("钓鱼场-{0}-{1} \r\n", field.ID, field.name);
 
             List<WaterRegion> regions = field.GetRegions();
@@ -64,7 +64,7 @@ public class FishGame : Singleton<FishGame>, IMiniGame {
     }
 
     public bool Stop() {
-        return FishGameSetting.Instance().UnInit();
+        return FishGameSetting.Instance.UnInit();
     }
 }
 

@@ -14,7 +14,7 @@ public class FishingField {
     public bool Init() {
         for (int i = 0; i < regionsID.Count; i++) {
             int regionID = regionsID[i];
-            WaterRegion region = FishGameSetting.Instance().regionData.GetRegionByID(regionID);
+            WaterRegion region = FishGameSetting.Instance.regionData.GetRegionByID(regionID);
             if (region != null) {
                 m_waterRegions.Add(region);
             }

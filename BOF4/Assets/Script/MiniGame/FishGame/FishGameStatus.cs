@@ -12,16 +12,16 @@ using System;
 public class FishStatusIdel : IStatus {
 
 	public void Update() {
-		if (InputManager.Instance().A) {
+		if (InputManager.Instance.A) {
 
 		}
 
-		if (InputManager.Instance().B) {
-			UIMgr.Instance().CloseWindow(UIWinID.UI_FishGame);
+		if (InputManager.Instance.B) {
+			UIMgr.Instance.CloseWindow(UIWinID.UI_FishGame);
 		}
 
-		if (InputManager.Instance().C) {
-			UIMgr.Instance().OpenWindow(UIWinID.UI_FishGame);
+		if (InputManager.Instance.C) {
+			UIMgr.Instance.OpenWindow(UIWinID.UI_FishGame);
 		}
 	}
 }

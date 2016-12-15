@@ -12,15 +12,17 @@ using UnityEngine;
 
 public class MonoSingleton<T> : MonoBehaviour where T : MonoSingleton<T> {
 	private static T inst = null;
-	public static T Instance() {
-		if (inst == null) {
-			inst = GameObject.FindObjectOfType<T>();
-			if (inst == null) {
-				_Create();
-			}
-		}
+	public static T Instance {
+        get {
+            if (inst == null) {
+                inst = GameObject.FindObjectOfType<T>();
+                if (inst == null) {
+                    _Create();
+                }
+            }
 
-		return inst;
+            return inst;
+        }
 	}
 
 	private static T _Create() {

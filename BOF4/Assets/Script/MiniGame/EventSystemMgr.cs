@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.EventSystems;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class EventSystemMgr : MonoSingleton<EventSystemMgr> {
 
