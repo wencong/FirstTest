@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(AnimatorController))]
 public class Player : MonoBehaviour, IADBUserData, ICharacter{
 	//
 	// base property
@@ -8,7 +9,8 @@ public class Player : MonoBehaviour, IADBUserData, ICharacter{
 	public int m_nSpeed = 100;
 	public int m_nMaxHP = 100;
 	public int m_nCurHP = 60;
-	private GameBit gb;
+	public GameBit gb;
+	public AnimatorController m_controller = null;
 
 	//
 	// inherited UnityEngine.Monobehaviour
@@ -33,7 +35,7 @@ public class Player : MonoBehaviour, IADBUserData, ICharacter{
 	}
 
 	public bool IsActive() {
-		return true;
+		return m_nCurHP > 0;
 	}
 
 	public bool IsActionDone() {
@@ -86,5 +88,12 @@ public class Player : MonoBehaviour, IADBUserData, ICharacter{
 
 	public int GetCurMP() {
 		return 0;
+	}
+
+	public AnimatorController GetController() {
+		if (m_controller == null) {
+			m_controller = GetComponent<AnimatorController>();
+		}
+		return m_controller;
 	}
 }

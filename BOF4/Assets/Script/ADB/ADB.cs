@@ -50,6 +50,11 @@ public class ADBMetaData {
 	}
 
 	public void Update() {
+		
+		if (!m_userData.IsActive()) {
+			return;
+		}
+
 		switch (m_eStatus) {
 			case ADBSTATUS.STATUS_IDEL: {
 				m_userData.OnStart();
@@ -145,3 +150,4 @@ public class ADB : Singleton<ADB> {
 		m_listMetaData.Add(metaData);
 	}
 }
+

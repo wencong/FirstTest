@@ -6,6 +6,11 @@ public interface ICondition {
 	string GetConditionName();
 }
 	
+public enum ConditionType {
+	SelfConditionType,
+	TeamMemConditionType,
+	EnemyConditionType
+}
 
 public class SelfHPGreaterThan : ICondition {
 	public float m_fPercent = 0.0f;

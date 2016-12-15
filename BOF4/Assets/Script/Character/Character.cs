@@ -14,5 +14,7 @@ public interface ICharacter {
 
 	int GetCurMP();
 
+	AnimatorController GetController();
+
 	// to do list
 }
